@@ -26,12 +26,12 @@ Relevant Tech implemented:
 - Room
 - Retrofit
 
-Complexity in order to demonstrate knowledge on architecture, decoupling and scalability capabilities
+Complexity in order to demonstrate knowledge over architecture, decoupling and scalability capabilities
 
 Aplication features:
 
 - No internet notificationLiveData
-- Database Room to saving favourites by ID
+- Database Room read, create and delete favourites by ID Character
 - Pagination 
 - Unit Test demonstration by layer
 
@@ -46,7 +46,7 @@ Relevant pattern:
 
 App Description
 
-Main view, scrolllist of characters filtered by favoourite at the begnining, scrolling and  favourite and no favourite interaction button. 
+Main view scrolllist of characters filtered by favourite at the begining, scrolling loader characters at demand, pagination, favourite and no favourite interaction button. 
 Second view description of character selected on the list, added a episode description in order to show more information.
 
 
