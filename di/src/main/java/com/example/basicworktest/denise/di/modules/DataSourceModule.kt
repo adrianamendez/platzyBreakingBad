@@ -19,8 +19,8 @@ val dataSourceModule = module {
     }
 }
 
-fun providesDatabase(application: Application):Database =
-    Room.databaseBuilder(application,Database::class.java,"database")
+fun providesDatabase(application: Application): Database =
+    Room.databaseBuilder(application, Database::class.java, "database")
         .build()
 
-fun providesDao(db:Database): Dao = db.dbDao()
+fun providesDao(db: Database): Dao = db.dbDao()

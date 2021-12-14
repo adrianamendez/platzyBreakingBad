@@ -35,17 +35,16 @@ class MainActivity :
 
     fun showDialogBreakingBad(title: String, body: String) {
 
-            var dialog: CustomDialogFragment? = null
-            dialog = CustomDialogFragment.Builder(this)
-                .setIcon(R.drawable.ic_error, R.color.white)
-                .setTitle(title)
-                .setMessage(body)
-                .setPositiveButton(R.string.accept_label, OnSingleClickListener {
-                    dialog?.dismiss()
-                })
-                .setCancelable(false)
-                .create()
-            dialog.show(this.supportFragmentManager, "TAG")
-
+        var dialog: CustomDialogFragment? = null
+        dialog = CustomDialogFragment.Builder(this)
+            .setIcon(R.drawable.ic_error, R.color.white)
+            .setTitle(title)
+            .setMessage(body)
+            .setPositiveButton(R.string.accept_label, OnSingleClickListener {
+                dialog?.dismiss()
+            })
+            .setCancelable(false)
+            .create()
+        dialog.show(this.supportFragmentManager, "TAG")
     }
 }

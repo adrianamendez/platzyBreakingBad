@@ -6,7 +6,7 @@ import retrofit2.Converter
 import retrofit2.Response
 import java.lang.reflect.Type
 
-internal object ResponseHandler{
+internal object ResponseHandler {
     fun <S : Any, E : Any> handle(
         response: Response<S>,
         successBodyType: Type,

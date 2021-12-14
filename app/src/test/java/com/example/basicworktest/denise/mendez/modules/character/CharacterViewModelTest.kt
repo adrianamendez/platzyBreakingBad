@@ -1,4 +1,4 @@
-package com.example.basicworktest.denise.mendez.modules.search
+package com.example.basicworktest.denise.mendez.modules.character
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
@@ -60,7 +60,7 @@ class CharacterViewModelTest {
 
     @Before
     fun setup() {
-        sut = CharacterViewModel(useCaseMock, messageException, testContextProvider )
+        sut = CharacterViewModel(useCaseMock, messageException, testContextProvider)
     }
 
     @Test

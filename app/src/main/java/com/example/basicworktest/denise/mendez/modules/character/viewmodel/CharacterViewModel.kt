@@ -176,6 +176,10 @@ class CharacterViewModel(
         getEpisodes()
     }
 
+    /**
+     * saving favourite id according to the list, if we update the list and the id is not matching on the remote loaded list
+     * the favourite will not be displayed.
+     */
     fun saveFavourite(item: CharacterBreakingBadUi) {
         if (::job.isInitialized) job.cancel()
         job = viewModelScope.launch(ioContext) {

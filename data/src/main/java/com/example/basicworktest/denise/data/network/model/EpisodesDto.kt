@@ -1,6 +1,5 @@
 package com.example.basicworktest.denise.data.network.model
 
-import com.example.basicworktest.denise.domain.entities.CharacterBreakingBadEntity
 import com.example.basicworktest.denise.domain.entities.EpisodesBreakingBadEntity
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -21,7 +20,7 @@ data class EpisodesDto(
     val episode: Int,
     @field:Json(name = "series")
     val series: String,
-){
+) {
     fun mapToDomain() = EpisodesBreakingBadEntity(
         episodeId,
         title,

@@ -2,7 +2,10 @@ package com.example.basicworktest.denise.mendez.modules.character.entities
 
 import com.example.basicworktest.denise.domain.entities.CharacterBreakingBadEntity
 import com.example.basicworktest.denise.domain.utils.EMPTY_STRING
-import com.example.basicworktest.denise.mendez.utils.*
+import com.example.basicworktest.denise.mendez.utils.listIntToString
+import com.example.basicworktest.denise.mendez.utils.listStringToString
+import com.example.basicworktest.denise.mendez.utils.stringToListInt
+import com.example.basicworktest.denise.mendez.utils.stringToListString
 import java.io.Serializable
 
 data class CharacterBreakingBadUi(

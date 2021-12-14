@@ -5,16 +5,11 @@ import android.view.View.*
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
-import com.example.basicworktest.denise.domain.utils.EMPTY_STRING
 import com.example.basicworktest.denise.mendez.R
-import com.example.basicworktest.denise.mendez.adapter.GenericAdapter
-import com.example.basicworktest.denise.mendez.adapter.ItemDataAbstract
 import com.example.basicworktest.denise.mendez.common.ScopedViewModel
 import com.example.basicworktest.denise.mendez.modules.character.entities.CharacterBreakingBadUi
 import com.example.basicworktest.denise.mendez.modules.character.entities.EpisodesBreakingBadUi
-import com.example.basicworktest.denise.mendez.modules.character.viewmodel.CharacterViewModel
 import com.example.basicworktest.denise.mendez.utils.hideKeyboard
 import com.example.basicworktest.denise.mendez.view.imageLoadingCaching.ImageLoader
 import com.google.android.material.imageview.ShapeableImageView
@@ -47,8 +42,8 @@ fun ImageView.isFavourite(character: CharacterBreakingBadUi?) {
 
 @BindingAdapter("isFavouriteLottie")
 fun LottieAnimationView.isFavouriteLottie(isFavourite: Boolean) {
-        visibility = if (isFavourite) VISIBLE
-        else INVISIBLE
+    visibility = if (isFavourite) VISIBLE
+    else INVISIBLE
 }
 
 @BindingAdapter("uiLoading")

@@ -38,7 +38,7 @@ class UseCaseTest {
         // given
         runBlocking {
             val listEntity = resultHandlerOf { listOf(mockedEntity) }
-            given(iRepository.getCharacters( offset, limit))
+            given(iRepository.getCharacters(offset, limit))
                 .willReturn(listEntity)
             // when
             val result = sut.getCharacters(offset, limit)

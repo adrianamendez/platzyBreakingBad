@@ -1,7 +1,7 @@
 package com.example.basicworktest.denise.di.modules
 
-import com.example.basicworktest.denise.data.network.BASE_URL
 import com.example.basicworktest.denise.data.network.Api
+import com.example.basicworktest.denise.data.network.BASE_URL
 import com.example.basicworktest.denise.data.network.NETWORK_TIME_OUT
 import com.example.basicworktest.denise.data.network.NetworkResponseAdapterFactory
 import com.squareup.moshi.Moshi

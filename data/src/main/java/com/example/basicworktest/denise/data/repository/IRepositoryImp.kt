@@ -15,20 +15,6 @@ class IRepositoryImp(
     private val localRepository: RoomDataSource
 ) : IRepository {
 
-    private suspend fun setFavouriteFromDB(list: ArrayList<CharacterBreakingBadEntity>): List<CharacterBreakingBadEntity> {
-        if (!list.isNullOrEmpty()) {
-            val dataList = list.map { firstListElement ->
-                getFavouriteItems()
-                    .filter { it.charId == firstListElement.charId }
-                    .lastOrNull()
-                    .let { firstListElement.copy(isFavourite = it?.isFavourite ?: false) }
-            }
-            return dataList
-        }
-        return list
-    }
-
-
     override suspend fun getCharacters(
         offset: Int,
         limit: Int
