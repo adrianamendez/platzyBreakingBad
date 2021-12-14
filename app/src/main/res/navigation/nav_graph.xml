@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/characterFragment">
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="com.example.basicworktest.denise.mendez.modules.character.view.CharacterFragment"
+        android:label="CharacterFragment" >
+        <action
+            android:id="@+id/action_characterFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment"
+            app:popUpTo="@id/characterDetailFragment"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="backEvent"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="com.example.basicworktest.denise.mendez.modules.character.view.CharacterDetailFragment"
+        android:label="CharacterDetailFragment" >
+        <action
+            android:id="@+id/action_characterDetailFragment_to_characterFragment"
+            app:destination="@id/characterFragment" />
+        <argument
+            android:name="character"
+            app:argType="com.example.basicworktest.denise.mendez.modules.character.entities.CharacterBreakingBadUi" />
+    </fragment>
+</navigation>

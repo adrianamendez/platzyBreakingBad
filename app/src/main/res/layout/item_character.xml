@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.basicworktest.denise.mendez.modules.character.entities.CharacterBreakingBadUi" />
+        <variable
+            name="viewModel"
+            type="com.example.basicworktest.denise.mendez.modules.character.viewmodel.CharacterViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/constraint_card_token_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/generic_margin_x_small"
+        android:paddingTop="@dimen/generic_margin_x_small"
+        android:paddingRight="@dimen/generic_margin_x_small">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view_token_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/generic_margin_x_small"
+            app:cardElevation="@dimen/card_elevation"
+            app:rippleColor="@color/colorPrimary"
+            android:background="@color/white"
+            app:strokeWidth="1dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardUseCompatPadding="true"
+            app:strokeColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/generic_margin_x_small"
+                android:layout_marginBottom="@dimen/generic_margin_xx_small">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/picture_imageview"
+                    android:layout_width="@dimen/generic_none_dimen"
+                    android:layout_height="@dimen/generic_none_dimen"
+                    android:contentDescription="@null"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_default="percent"
+                    app:layout_constraintWidth_percent=".33"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                    app:loadImageUrl="@{item.img}"
+                    tools:scaleType="centerCrop"
+                    tools:src="@drawable/naturo_frog" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/generic_margin_small"
+                    android:layout_marginEnd="@dimen/generic_margin_small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/picture_imageview"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/title_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/generic_margin_x_small"
+                        android:ellipsize="end"
+                        android:maxLines="3"
+                        android:text="@{item.name}"
+                        android:textColor="@color/textLight"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/favourite_imageView"
+                        tools:text="Naruto frog frog frog " />
+
+                    <TextView
+                        android:id="@+id/price_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/generic_margin_x_small"
+                        android:textColor="@color/textLight"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="@{item.nickname}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/title_textView"
+                        tools:text="Hank" />
+
+                    <ImageView
+                        android:id="@+id/favourite_imageView"
+                        android:layout_width="@dimen/favourite_image_dimen"
+                        android:layout_height="@dimen/favourite_image_dimen"
+                        android:layout_marginEnd="@dimen/generic_margin_xx_small"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:src="@drawable/ic_favourite_empty"
+                        app:isFavourite="@{item}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+</layout>

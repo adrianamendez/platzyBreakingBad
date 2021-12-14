@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.basicworktest.denise.mendez.modules.character.viewmodel.CharacterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_view_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:focusableInTouchMode="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:elevation="@dimen/toolbarElevation"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:title="@{viewModel.character.name}" />
+
+        <ScrollView
+            android:id="@+id/sv_main_detail"
+            android:layout_width="@dimen/generic_none_dimen"
+            android:layout_height="@dimen/generic_none_dimen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/generic_margin_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/picture_imageview"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:contentDescription="@null"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_default="percent"
+                    app:layout_constraintWidth_percent=".80"
+                    app:loadImageUrl="@{viewModel.character.img}"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                    tools:scaleType="centerCrop"
+                    tools:src="@drawable/naturo_frog" />
+
+                <TextView
+                    android:id="@+id/name_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/generic_margin_x_medium"
+                    android:maxLines="3"
+                    android:text="@{viewModel.character.name}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_title_big"
+                    app:layout_constraintEnd_toStartOf="@+id/favourite_imageView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/picture_imageview"
+                    tools:text="Heisenberg">
+
+                </TextView>
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/favourite_imageView"
+                    android:layout_width="@dimen/favourite_image_lottie_dimen"
+                    android:layout_height="@dimen/favourite_image_lottie_dimen"
+                    android:background="@android:color/transparent"
+                    app:isFavouriteLottie="@{viewModel.character.favourite}"
+                    app:layout_constraintBottom_toBottomOf="@+id/name_textView"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/name_textView"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:layout_constraintWidth_default="percent"
+                    app:layout_constraintWidth_percent=".7"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="full-heart.json"
+                    app:lottie_loop="true" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/not_favourite_imageView"
+                    android:layout_width="@dimen/no_favourite_image_lottie_dimen"
+                    android:layout_height="@dimen/no_favourite_image_lottie_dimen"
+                    android:background="@android:color/transparent"
+                    app:isFavouriteLottie="@{!viewModel.character.favourite}"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/picture_imageview"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:layout_constraintWidth_default="percent"
+                    app:layout_constraintWidth_percent=".7"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="empty-heart.json"
+                    app:lottie_loop="true" />
+
+                <TextView
+                    android:id="@+id/lbl_occupation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/generic_margin_x_medium"
+                    android:text="@string/lbl_occupation"
+                    android:textColor="@color/textLight"
+                    android:textSize="@dimen/text_size_body"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name_textView" />
+
+                <TextView
+                    android:id="@+id/lbl_occupation_text"
+                    android:layout_width="@dimen/generic_none_dimen"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@{viewModel.character.occupation}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/lbl_occupation"
+                    app:layout_constraintTop_toTopOf="@+id/lbl_occupation"
+                    tools:text="Naruto frog frog frog frog frog" />
+
+                <TextView
+                    android:id="@+id/lbl_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_status"
+                    android:textColor="@color/textLight"
+                    android:textSize="@dimen/text_size_body"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_occupation_text" />
+
+                <TextView
+                    android:id="@+id/lbl_status_text"
+                    android:layout_width="@dimen/generic_none_dimen"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@{viewModel.character.status}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/lbl_status"
+                    app:layout_constraintTop_toTopOf="@+id/lbl_status"
+                    tools:text="Naruto frog frog frog frog frog" />
+
+                <TextView
+                    android:id="@+id/lbl_portrayed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/generic_margin_x_small"
+                    android:text="@string/lbl_portrayed"
+                    android:textColor="@color/textLight"
+                    android:textSize="@dimen/text_size_body"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_status" />
+
+                <TextView
+                    android:id="@+id/lbl_portrayed_text"
+                    android:layout_width="@dimen/generic_none_dimen"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@{viewModel.character.portrayed}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/lbl_portrayed"
+                    app:layout_constraintTop_toTopOf="@+id/lbl_portrayed"
+                    tools:text="Naruto frog frog frog frog frog" />
+
+                <TextView
+                    android:id="@+id/lbl_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/generic_margin_x_small"
+                    android:text="@string/lbl_nickname"
+                    android:textColor="@color/textLight"
+                    android:textSize="@dimen/text_size_body"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_portrayed" />
+
+                <TextView
+                    android:id="@+id/lbl_nickname_text"
+                    android:layout_width="@dimen/generic_none_dimen"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@{viewModel.character.nickname}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/lbl_nickname"
+                    app:layout_constraintTop_toTopOf="@+id/lbl_nickname"
+                    tools:text="Naruto frog frog frog frog frog" />
+
+                <TextView
+                    android:id="@+id/lbl_birthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/generic_margin_x_small"
+                    android:text="@string/lbl_birthday"
+                    android:textColor="@color/textLight"
+                    android:textSize="@dimen/text_size_body"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_nickname" />
+
+                <TextView
+                    android:id="@+id/lbl_birthday_text"
+                    android:layout_width="@dimen/generic_none_dimen"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@{viewModel.character.birthday}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/lbl_birthday"
+                    app:layout_constraintTop_toTopOf="@+id/lbl_birthday"
+                    tools:text="Naruto frog frog frog frog frog" />
+
+                <TextView
+                    android:id="@+id/lbl_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/generic_margin_x_small"
+                    android:text="@string/lbl_category"
+                    android:textColor="@color/textLight"
+                    android:textSize="@dimen/text_size_body"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_birthday" />
+
+                <TextView
+                    android:id="@+id/lbl_category_text"
+                    android:layout_width="@dimen/generic_none_dimen"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@{viewModel.character.category}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/lbl_category"
+                    app:layout_constraintTop_toTopOf="@+id/lbl_category"
+                    tools:text="Naruto frog frog frog frog frog" />
+
+                <TextView
+                    android:id="@+id/lbl_seasons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/generic_margin_x_small"
+                    android:text="@string/lbl_seasons"
+                    android:textColor="@color/textLight"
+                    android:textSize="@dimen/text_size_body"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_category" />
+
+                <TextView
+                    android:id="@+id/lbl_seasons_text"
+                    android:layout_width="@dimen/generic_none_dimen"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@{viewModel.character.appearance}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/lbl_seasons"
+                    app:layout_constraintTop_toTopOf="@+id/lbl_seasons"
+                    tools:text="Naruto frog frog frog frog frog" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/episodes_view_constraint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:uiEpisodesView="@{viewModel.episode}"
+                    android:padding="@dimen/generic_margin_small"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_seasons">
+
+                    <TextView
+                        android:id="@+id/title_textview"
+                        android:layout_width="@dimen/generic_none_dimen"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/generic_margin_medium"
+                        android:maxLines="3"
+                        android:text="@string/lbl_episode_bonus"
+                        android:textColor="@color/purple_700"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_size_title"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Episode Bonus" />
+
+                    <TextView
+                        android:id="@+id/lbl_title_label"
+                        android:layout_width="@dimen/generic_none_dimen"
+                        android:layout_height="wrap_content"
+                        android:maxLines="3"
+                        android:text="@{viewModel.episode.title}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_title"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/generic_margin_medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/title_textview"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:text="mi episodio" />
+
+                    <TextView
+                        android:id="@+id/characters_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/generic_margin_x_medium"
+                        android:text="@string/lbl_characters"
+                        android:textColor="@color/textLight"
+                        android:textSize="@dimen/text_size_body"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lbl_title_label" />
+
+                    <TextView
+                        android:id="@+id/lbl_characters_episode"
+                        android:layout_width="@dimen/generic_none_dimen"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="@{viewModel.episode.characters}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/characters_textview"
+                        app:layout_constraintTop_toTopOf="@+id/characters_textview"
+                        tools:text="Naruto frog frog frog frog frog" />
+                    <TextView
+                        android:id="@+id/series_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/generic_margin_x_medium"
+                        android:text="@string/lbl_series"
+                        android:textColor="@color/textLight"
+                        android:textSize="@dimen/text_size_body"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lbl_characters_episode" />
+
+                    <TextView
+                        android:id="@+id/lbl_series_episode"
+                        android:layout_width="@dimen/generic_none_dimen"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="@{viewModel.episode.series}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/series_textview"
+                        app:layout_constraintTop_toTopOf="@+id/series_textview"
+                        tools:text="Naruto frog frog frog frog frog" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <include
+            android:id="@+id/include_no_internet_error_view"
+            layout="@layout/no_internet_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?android:attr/actionBarSize"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:uiNoInternetState="@{ viewModel.model  }" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
